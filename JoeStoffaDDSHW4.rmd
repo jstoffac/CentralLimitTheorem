@@ -2,7 +2,7 @@
 title: "Central Limit Theorem"
 author: "Joe Stoffa"
 date: "May 31, 2016"
-output: pdf_document
+output: html_document
 ---
 
 
