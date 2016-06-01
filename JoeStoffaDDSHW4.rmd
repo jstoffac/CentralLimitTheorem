@@ -1,0 +1,75 @@
+---
+title: "Central Limit Theorem"
+author: "Joe Stoffa"
+date: "May 31, 2016"
+output: html_document
+---
+
+
+## Definition
+
+Roughly speaking, the Central Limit Theorem states that if you where to itirate taking random samples from a population, the distribution of the means of all those random samples would be normal regardless of the distribution of the population.
+
+
+## A Demonstration
+
+To demonstrate the Central Limit Theorem we will create two sets of population data.  The first will be normally distributed while the second will be exponentially distributed.
+```{r}
+normal <- rnorm(10000)
+hist(normal)
+```
+
+```{r}
+exponential <- rexp(10000, rate = 1)
+hist(exponential)
+```
+
+The population of each distribution was set to 10,000 so that we can plainly see their shapes.  Next we will randomly take 2 sets of 100 samples from each distribution.  The first 100 samples will be size 10 and the second will be size 100.  These different sets will show us the effect of sample size on the distribution of the sample.
+
+## 100 Samples of Size 10
+### Normal
+
+```{r}
+meansOfRandomSamples = 1
+for (i in 1:100) { 
+  randomSample <- sample(normal, 10, replace = FALSE)
+  meansOfRandomSamples[i] <- mean(randomSample) 
+  }
+hist(meansOfRandomSamples)
+```
+
+### Exponential
+
+```{r}
+meansOfRandomSamples = 1
+for (i in 1:100) { 
+  randomSample <- sample(exponential, 10, replace = FALSE)
+  meansOfRandomSamples[i] <- mean(randomSample) 
+  }
+hist(meansOfRandomSamples)
+```
+
+## 100 Samples of Size 100
+### Normal
+
+```{r}
+meansOfRandomSamples = 1
+for (i in 1:100) { 
+  randomSample <- sample(normal, 100, replace = FALSE)
+  meansOfRandomSamples[i] <- mean(randomSample) 
+  }
+hist(meansOfRandomSamples)
+```
+
+### Exponential
+```{r}
+meansOfRandomSamples = 1
+for (i in 1:100) { 
+  randomSample <- sample(exponential, 100, replace = FALSE)
+  meansOfRandomSamples[i] <- mean(randomSample) 
+  }
+hist(meansOfRandomSamples)
+```
+
+## Explanation of Sample Size
+It's plain to see that the distributions formed from the larger sample size appear to be more normal than the smaller.  This result is rather intuitive.  If we increase the size of a sample we are including more of the original population in the sample and therefore the potential for some of the more extreme values to influence the sample is decreased.  In our first set of distributions of 100 sample means we used a small sample size of 10.  Therefore, we would expect to see a less normal distribution.  This is especially true for the distribution of sample means from a non-normal distribution and is evident by comparing the distributions of the plots of the sample means.  The plot of the sample means taken from the normally distributed population is more normal than the expodential.  As we increase the sample size to 100, both plots take on a distinctively more normal distribution.  This demonstrates the need for having larger sample sizes when dealing with less normal distributions.
