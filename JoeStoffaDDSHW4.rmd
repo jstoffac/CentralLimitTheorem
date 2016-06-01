@@ -32,7 +32,7 @@ The population of each distribution was set to 10,000 so that we can plainly see
 ```{r}
 meansOfRandomSamples = 1
 for (i in 1:100) { 
-  randomSample <- sample(normal, 10, replace = FALSE)
+  randomSample <- sample(normal, 10, replace = TRUE)
   meansOfRandomSamples[i] <- mean(randomSample) 
   }
 hist(meansOfRandomSamples)
@@ -43,7 +43,7 @@ hist(meansOfRandomSamples)
 ```{r}
 meansOfRandomSamples = 1
 for (i in 1:100) { 
-  randomSample <- sample(exponential, 10, replace = FALSE)
+  randomSample <- sample(exponential, 10, replace = TRUE)
   meansOfRandomSamples[i] <- mean(randomSample) 
   }
 hist(meansOfRandomSamples)
@@ -55,7 +55,7 @@ hist(meansOfRandomSamples)
 ```{r}
 meansOfRandomSamples = 1
 for (i in 1:100) { 
-  randomSample <- sample(normal, 100, replace = FALSE)
+  randomSample <- sample(normal, 100, replace = TRUE)
   meansOfRandomSamples[i] <- mean(randomSample) 
   }
 hist(meansOfRandomSamples)
@@ -65,7 +65,7 @@ hist(meansOfRandomSamples)
 ```{r}
 meansOfRandomSamples = 1
 for (i in 1:100) { 
-  randomSample <- sample(exponential, 100, replace = FALSE)
+  randomSample <- sample(exponential, 100, replace = TRUE)
   meansOfRandomSamples[i] <- mean(randomSample) 
   }
 hist(meansOfRandomSamples)
